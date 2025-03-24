@@ -62,6 +62,10 @@ O projeto fornece uma abordagem eficiente para extração automática de insight
 - Python 3.8+
 - Bibliotecas listadas em `requirements.txt`
 
+### Environment:
+1. Criar arquivo .env
+2. Inserir informações do  arquivo .env.example dentro do .env criado
+
 ### Instalação:
 ```bash
 pip install -r requirements.txt
