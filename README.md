@@ -1,4 +1,4 @@
-# Video Analysis - Extração e Análise de Transcrição de Vídeos do YouTube
+# Video Insights - Extração e Análise de Transcrição de Vídeos do YouTube
 
 ## Visão Geral
 Este projeto tem como objetivo realizar a análise de vídeos do YouTube, permitindo aos usuários extrair resumos, tópicos principais e ganchos persuasivos de uma transcrição. O processamento pode ser realizado de duas formas:
@@ -8,6 +8,8 @@ Este projeto tem como objetivo realizar a análise de vídeos do YouTube, permit
 
 Os usuários podem fornecer a **URL do vídeo** ou a **transcrição textual** manualmente para processamento.
 
+- Projeto N8N: https://n8n-service-qbul.onrender.com/workflow/mKDhpvw91QiW1z07
+
 ---
 
 ## Tecnologias Utilizadas
@@ -15,19 +17,14 @@ Os usuários podem fornecer a **URL do vídeo** ou a **transcrição textual** m
 ### Bibliotecas e APIs Python
 - **Transcrição de vídeo**: [youtube-transcript-api](https://pypi.org/project/youtube-transcript-api/)
 - **Tradução para português**: [DeepL API](https://developers.deepl.com/docs#get-an-api-key-and-get-started)
-  - Chave de API: `53041adb-0d02-4995-a15e-947dd24fc6a2:fx`
   - Alternativa gratuita: API do Google Tradutor (qualidade inferior)
 - **Gerenciamento de variáveis de ambiente**: [python-dotenv](https://pypi.org/project/python-dotenv/)
 - **Análise de linguagem natural e geração de resumos**: [DeepSeek API](https://api-docs.deepseek.com/)
-  - Chave de API: `sk-3b81da2468454c49b54213f403d1c993`
 
 ### Integração com n8n
-- **Autenticação via Webhook (Basic Auth)**
-  - Usuário: `videoinsightsuserauth`
-  - Senha: `aPBeEuQjQ58SZJ4R26SqdWOAG`
 - **Transcrição de vídeos alternativa**: [Kome AI](https://kome.ai/tools/youtube-transcript-generator)
   - Opção gratuita para evitar sobrecarga da API do DeepSeek.
-
+- **Análise de linguagem natural e geração de resumos**: [DeepSeek API](https://api-docs.deepseek.com/)
 ---
 
 ## Estrutura do Projeto
@@ -64,6 +61,10 @@ O projeto fornece uma abordagem eficiente para extração automática de insight
 ### Requisitos:
 - Python 3.8+
 - Bibliotecas listadas em `requirements.txt`
+
+### Environment:
+1. Criar arquivo .env
+2. Inserir informações do  arquivo .env.example dentro do .env criado
 
 ### Instalação:
 ```bash
