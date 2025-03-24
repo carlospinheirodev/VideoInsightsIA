@@ -101,7 +101,7 @@ def ai_text_analysis(text: str):
         return None, f"Erro ao analisar texto: {str(e)}"
 
 def analysis_with_n8n(video: str, type: str):
-    url = "http://localhost:5678/webhook/video-insights"
+    url = "https://n8n-service-qbul.onrender.com/webhook/video-insights"
     username = os.getenv('N8N_AUTH_USER')
     password = os.getenv('N8N_AUTH_PASSWORD')
 
