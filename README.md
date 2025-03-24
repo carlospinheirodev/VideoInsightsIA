@@ -8,7 +8,7 @@ Este projeto tem como objetivo realizar a análise de vídeos do YouTube, permit
 
 Os usuários podem fornecer a **URL do vídeo** ou a **transcrição textual** manualmente para processamento.
 
-- Projeto N8N: https://n8n-service-qbul.onrender.com/workflow/mKDhpvw91QiW1z07
+- Projeto N8N: https://n8n-service-qbul.onrender.com/workflow/mKDhpvw91QiW1z07 - por ser um servidor gratuíto (Render), o carregamento pode ser um pouco demorado.
 
 ---
 
