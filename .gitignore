@@ -1,0 +1,23 @@
+# Dependências do Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.env
+*.venv
+
+# Arquivos de configuração sensíveis
+.env
+config.json
+instance/
+
+# Logs e arquivos temporários
+*.log
+*.sqlite3
+*.db
+.DS_Store
+
+# Cache e diretórios do PyCharm/VSCode
+.vscode/
+.idea/

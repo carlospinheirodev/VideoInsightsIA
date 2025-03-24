@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VideoInsights | DaVinci</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <header id="header">
+        <div class="container">
+            <p id="header-title">VideoInsights</p>
+        </div>
+    </header>
+
+    <section id="form-section" class="container">
+        <form action="#" method="post" onsubmit="formSubmit()">
+            {% if error %}
+            <div id="error-box">
+                <p>{{ error }}</p>
+            </div>
+             {% endif %}
+            <div id="form-toggles">
+                <div id="input-type-toggle">
+                    <label>
+                        <input
+                            type="radio"
+                            name="input-type"
+                            value="url"
+                            checked
+                            onclick="toggleInput('url')"
+                        >
+                        Inserir URL
+                    </label>
+                    <label>
+                        <input
+                            type="radio"
+                            name="input-type"
+                            value="text"
+                            onclick="toggleInput('text')"
+                        >
+                        Inserir Transcrição
+                    </label>
+                </div>
+                <div id="analysis-tool-toggle">
+                    <input
+                        type="checkbox"
+                        id="toggle-tool"
+                        name="use-n8n"
+                    > Usar N8N?
+                </div>
+            </div>
+            <div id="url-input">
+                <input
+                type="text"
+                name="video-url"
+                id="video-url"
+                placeholder="Cole a URL do YouTube aqui...""
+                >
+            </div>
+            <div id="text-input" style="display: none;">
+                <textarea
+                    name="video-transcription"
+                    id="video-transcription"
+                    placeholder="Cole a transcrição do vídeo aqui..."
+                    rows="6"
+                    cols="100"
+                ></textarea>
+            </div>
+            <button
+                type="submit"
+                id="submit-btn"
+                class="primary-btn"
+            >
+                <img
+                    src="/static/img/load.svg"
+                    alt="load icon"
+                    id="load-icon"
+                >
+                <img
+                    src="/static/img/upload.svg"
+                    alt="upload icon"
+                    id="upload-icon"
+                >
+                Analisar Video
+            </button>
+            {% if errorForm %}
+                <p id="error-form">{{ errorForm }}</p>
+            {% endif %}
+        </form>
+    </section>
+    <section id="analysis-section" class="container">
+        <div class="card">
+            <div class="card-title">
+                <div class="card-title--left">
+                    <img src="/static/img/clock.svg" alt="clock icon">
+                    <h2>
+                        Resumo do vídeo
+                    </h2>
+                </div>
+                <div class="card-title--right">
+                </div>
+            </div>
+            <p>
+                {% if not analysis_complete %}
+                    O resumo do vídeo será exibido aqui.
+                    Explore os principais pontos abordados e obtenha uma visão geral do
+                    conteúdo antes de assistir. Com essa análise, você poderá entender
+                    melhor o contexto e os detalhes mais importantes apresentados.
+                {% else %}
+                    {{ analysis.resumo }}
+                {% endif %}
+            </p>
+        </div>
+        <div class="card">
+            <div class="card-title">
+                <div class="card-title--left">
+                    <img src="/static/img/list.svg" alt="list icon">
+                    <h2>
+                        Principais tópicos
+                    </h2>
+                </div>
+                <div class="card-title--right">
+                </div>
+            </div>
+            {% if not analysis_complete %}
+            <p>
+                Os principais tópicos do vídeo aparecerão aqui.
+                Descubra os assuntos mais relevantes discutidos ao longo do conteúdo.
+                Essa visão organizada ajudará você a captar rapidamente os temas centrais
+                e a aprofundar seu conhecimento.
+            </p>
+            {% else %}
+                <ul>
+                    {% for topico in analysis.topicos %}
+                        <li>{{ topico }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="card">
+            <div class="card-title">
+                <div class="card-title--left">
+                    <img src="/static/img/trophey.svg" alt="trophey icon">
+                    <h2>
+                        Principais ganchos
+                    </h2>
+                </div>
+                <div class="card-title--right">
+                </div>
+            </div>
+            {% if not analysis_complete %}
+            <p>
+                Os principais ganchos do vídeo aparecerão aqui.
+                Veja quais elementos chamam a atenção e tornam o conteúdo envolvente.
+                Essas frases impactantes são usadas para prender o público e despertar
+                maior interesse no tema abordado.
+            </p>
+            {% else %}
+            <ol>
+                {% for gancho in analysis.ganchos %}
+                    <li>{{ gancho }}</li>
+                {% endfor %}
+            </ol>
+            {% endif %}
+        </div>
+    </section>
+    <footer id="footer">
+        <p>Desenvolvido por Carlos Natanael S. Pinheiro, 2025.</p>
+    </footer>
+
+    <script>
+        function toggleInput(type) {
+            document.getElementById('url-input').style.display = type === 'url' ? 'block' : 'none';
+            document.getElementById('text-input').style.display = type === 'text' ? 'block' : 'none';
+        }
+
+        function formSubmit(form){
+            let buttonSubmit = document.getElementById('submit-btn');
+
+            buttonSubmit.disabled = true;
+            buttonSubmit.innerHTML = 'Carregando...';
+        }
+    </script>
+</body>
+</html>
