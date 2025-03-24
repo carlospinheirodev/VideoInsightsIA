@@ -19,7 +19,6 @@ def homepage():
         analysis_complete = False
         complete_analysis = None
 
-        print(use_n8n)
         if use_n8n == 'on':
             videoData = None
             if input_type == 'url':
